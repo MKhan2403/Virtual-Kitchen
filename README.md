@@ -4,12 +4,35 @@ Virtual Kitchen is a **database-driven web application** built with **PHP, MySQL
 It allows food enthusiasts to explore, share, and manage recipes — while demonstrating **secure web development** skills suitable for cybersecurity placements and internships.  
 
 ## Features  
-- Public users can browse and search recipes by keyword or cuisine type.  
-- Registered users can:  
+- Public users: 
+  - Browse all recipes
+  - Search by recipe name, type, or ingredient
+  - View recipe details (ingredients, instructions, owner info)
+- Registered users:  
   - Create new recipes (with images).  
   - Edit or delete their own recipes.  
   - Manage their account securely.  
-- Security-first design: protection against **XSS, SQL Injection, CSRF, Session Hijacking, and Insecure File Uploads**.  
+- Security-first design: protection against **XSS, SQL Injection, CSRF, Session Hijacking, and Insecure File Uploads**.
+
+## Database
+**users**
+- `uid` (PK)
+- `username` (unique)
+- `password` (hashed)
+- `email` (unique)
+- `created_at`
+
+**recipes**
+- `rid` (PK)
+- `name`
+- `description`
+- `type` (ENUM)
+- `cookingtime`
+- `ingredients`
+- `instructions`
+- `image`
+- `uid` (FK → users.uid)
+- `created_at`
 
 ## 🔐 Security Practices Demonstrated  
 
@@ -61,6 +84,11 @@ session_regenerate_id(true);**
 
 Mitigates session fixation and hijacking
 
+### 6. Output Escaping
+`htmlspecialchars()` prevents XSS attacks
+
+### 7. Authentication & Authorisation
+ Only recipe owners can edit their recipes
 ## Tech Stack
 
 **Backend:** PHP + MySQL
