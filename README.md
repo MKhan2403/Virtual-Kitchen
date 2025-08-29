@@ -16,14 +16,14 @@ It allows food enthusiasts to explore, share, and manage recipes — while demon
 
 ## Database
 **users**
-- `uid` (PK)
+- `uid` (Primary Key)
 - `username` (unique)
 - `password` (hashed)
 - `email` (unique)
 - `created_at`
 
 **recipes**
-- `rid` (PK)
+- `rid` (Primary Key)
 - `name`
 - `description`
 - `type` (ENUM)
@@ -31,7 +31,7 @@ It allows food enthusiasts to explore, share, and manage recipes — while demon
 - `ingredients`
 - `instructions`
 - `image`
-- `uid` (FK → users.uid)
+- `uid` (Foreign Key → users.uid)
 - `created_at`
 
 ## 🔐 Security Practices Demonstrated  
